@@ -10,17 +10,19 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
     id: 'mapbox.streets'
 }).addTo(mymap);
 
+// --- LES MARQUEURS --- declaration
 // Premier marqueur : CNAM
 
 var marker_cnam = L.marker([48.867008, 2.355349]);
 marker_cnam.bindPopup("Conservatoire National des Arts et Métiers").openPopup();
 marker_cnam.on("click", clickOnCNAM);
 
-marker_cnam.addTo(mymap) // on ajoute le marqueur à la carte
 
-alert("Aujourd'hui a lieu une exposition sur les globes au CNAM");
+
 
 function clickOnCNAM(e){
     alert("Vous visitez le musée et tombez sur une étrange carte !");
-
 }
+// LES MARQUEURS --- affichage evenements
+alert("Aujourd'hui a lieu une exposition sur les globes au CNAM");
+marker_cnam.addTo(mymap) // on ajoute le marqueur à la carte
