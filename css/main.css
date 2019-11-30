@@ -32,3 +32,9 @@
     position: absolute;
     margin-top: 400px;
 }
+
+.item  {
+    max-width: 50px;
+    margin-left: 20px;
+    display: inline;
+}
