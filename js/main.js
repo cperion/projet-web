@@ -7,3 +7,14 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
         'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     id: 'mapbox.streets'
 }).addTo(mymap);
+
+var myIcon = L.icon({
+    iconUrl: "../img/tresor.png",
+    iconSize: [40, 40], // size of the icon,
+});
+
+var startMarker = L.marker([51.5, -0.09], {icon: myIcon})
+startMarker.addTo(mymap)
+
+startMarker.bindPopup("<b>Salut</b><br>Bienvenu dans le projet de Lucas et Cédric. Ta course commence ici.").openPopup();
+
