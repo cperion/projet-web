@@ -1,0 +1,2 @@
+----- db -----
+pour trouver la bdd obj du jeu aller dans mysql puis geoEscape
