@@ -1,4 +1,4 @@
-// On fait la carte 
+// On fait la carte
 
 var mymap = L.map('map').setView([48.86, 2.35], 13);
 
@@ -22,10 +22,10 @@ marker_cnam.on("click", clickOnCNAM);
 var marker_rome= L.marker([41.8941, 12.4854]);
 marker_rome.bindPopup("Forum Romain").openPopup();
 marker_rome.on("click", clickOnROME);
- 
+
 // Troisieme marqueur : Venise
 
-var marker_venise = L.marker([41.4385, 12.3275]);
+var marker_venise = L.marker([45.4385, 12.3275]);
 marker_venise.bindPopup("Venise").openPopup();
 marker_venise.on("click", clickOnVENISE);
 
@@ -55,44 +55,67 @@ marker_herjolfsnes.on("click", clickOnHERJOLFSNES);
 
 
 // Evenements
+var inventory = document.getElementById('inventory');
 
 function clickOnCNAM(e) {
     alert("Vous visitez le musée et tombez sur une étrange carte !");
+    marker_rome.addTo(mymap);
+    add_obj_invent(inventory,"carte_forum_romain.jpg");
 }
 
 function clickOnROME(e) {
+  /** fct à terminer, l'idée c'est de charger l'icône dans l'inventaire et que lorsqu'on clique dessus le code s'affiche et on doit remplir le bon déchiffrement dans une zone de texte */
     alert("ROMMMME");
+    obj = add_obj_invent(inventory,"code_statue_cesar.jpg");
+    obj.addEventListener("click",function(){
+      if(input.value=="zeno venise"){
+        var input = document.createElement("INPUT");
+        input.setAttribute("type", "text");
+        marker_venise.addTo(mymap);
+      };
+    })
 }
 
 function clickOnVENISE(e) {
     alert("VENEZ, Venise ...");
+    marker_rosslyn.addTo(mymap);
 }
 
 function clickOnROSSLYN(e) {
-    alert("Grosse ligne");
+  alert("En visitant la chapelle vous tombez sur un parchemin bizarre !");
+  var parchemin = document.createElement('IFRAME');
+  parchemin.src = "parchemin.html";
+  document.body.appendChild(iframe);
+  marker_jerusalem.addTo(mymap);
 }
 
 function clickOnJERUSALEM(e) {
-    alert("JESUS SALEM");
+    alert("En allant visiter le St-Sépulcre, vous tombez sur un guide original qui se met à parler d'une tour qui se trouve aux US dont les plans de construction correspondent à ceux de la chapelle du St-Sépulcre.");
+    alert("Ce qui est étonnant c'est que cette chapelle aurait été construit avant la découverte de l'Amérique en 1492...");
+    marker_newport.addTo(mymap);
 }
 
 function clickOnHERJOLFSNES(e) {
-    alert("HerWHAT §!?");
+    alert("Vous avez trouvé une vieille colonie viking où se trouve un monastère. Vous décidez de vous y rendre.");
+    alert("Une liste de coordonnées géographiques se trouvent dans un manuscrit louche...")
+    marker_herjolfsnes.addTo(mymap);
 }
 
 function clickOnNEWPORT(e) {
-    alert("vive l'usb");
+    alert("Vous vous approchez de la tour mais elle est entourée de barrières et nous sommes en plein jour...");
+    /**conditon pour faire style on attend la nuit qui autorise la lecture du message */
+    alert("Après vous être introduit dans la tour, vous tombez nez à nez avec une inscription en langue micmac: maqamigew esgig")
 }
 
-
+function add_obj_invent(inventory,image){
+  /** cette fct ajoute un objet à l'inventaire mais il va falloir créer des icones pour les objets
+  aussi pour chaque objet il va falloir recréer une fonction eventlistener */
+  var obj = document.createElement("IMG")
+  obj.src = image;
+  inventory.appendChild(obj);
+}
 
 
 // LES MARQUEURS --- affichage
 alert("Aujourd'hui a lieu une exposition sur les globes au CNAM");
 marker_cnam.addTo(mymap) // on ajoute le marqueur à la carte
-marker_rome.addTo(mymap);
-marker_venise.addTo(mymap);
-marker_rosslyn.addTo(mymap);
-marker_jerusalem.addTo(mymap);
-marker_newport.addTo(mymap);
-marker_herjolfsnes.addTo(mymap);
