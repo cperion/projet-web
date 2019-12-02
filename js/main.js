@@ -11,6 +11,16 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 }).addTo(mymap);
 
 // --- LES MARQUEURS --- declaration
+
+// variables de visibilite
+
+var romeVisible = false;
+var veniseVisible = false;
+var rosslynVisible = false;
+var jerusalemVisible = false;
+var herjolfsnesVisible = false;
+var newportVisible = false;
+
 // Premier marqueur : CNAM
 
 var marker_cnam = L.marker([48.867008, 2.355349]);
@@ -59,7 +69,7 @@ var inventory = document.getElementById('inventory');
 
 function clickOnCNAM(e) {
     alert("Vous visitez le musée et tombez sur une étrange carte !");
-    marker_rome.addTo(mymap);
+    romeVisible = true;
     add_obj_invent(inventory,"carte_forum_romain.jpg");
 }
 
@@ -71,34 +81,34 @@ function clickOnROME(e) {
       if(input.value=="zeno venise"){
         var input = document.createElement("INPUT");
         input.setAttribute("type", "text");
-        marker_venise.addTo(mymap);
+          veniseVisible = true;
       };
     })
 }
 
 function clickOnVENISE(e) {
     alert("VENEZ, Venise ...");
-    marker_rosslyn.addTo(mymap);
+    rosslynVisible = true;
 }
 
 function clickOnROSSLYN(e) {
-  alert("En visitant la chapelle vous tombez sur un parchemin bizarre !");
-  var parchemin = document.createElement('IFRAME');
-  parchemin.src = "parchemin.html";
-  document.body.appendChild(iframe);
-  marker_jerusalem.addTo(mymap);
+    alert("En visitant la chapelle vous tombez sur un parchemin bizarre !");
+    var parchemin = document.createElement('IFRAME');
+    parchemin.src = "parchemin.html";
+    document.body.appendChild(iframe);
+    jerusalemVisible = true;
 }
 
 function clickOnJERUSALEM(e) {
     alert("En allant visiter le St-Sépulcre, vous tombez sur un guide original qui se met à parler d'une tour qui se trouve aux US dont les plans de construction correspondent à ceux de la chapelle du St-Sépulcre.");
     alert("Ce qui est étonnant c'est que cette chapelle aurait été construit avant la découverte de l'Amérique en 1492...");
-    marker_newport.addTo(mymap);
+    newportVisible = true;
 }
 
 function clickOnHERJOLFSNES(e) {
     alert("Vous avez trouvé une vieille colonie viking où se trouve un monastère. Vous décidez de vous y rendre.");
     alert("Une liste de coordonnées géographiques se trouvent dans un manuscrit louche...")
-    marker_herjolfsnes.addTo(mymap);
+    herjolfsnesVisible = true;
 }
 
 function clickOnNEWPORT(e) {
@@ -119,3 +129,6 @@ function add_obj_invent(inventory,image){
 // LES MARQUEURS --- affichage
 alert("Aujourd'hui a lieu une exposition sur les globes au CNAM");
 marker_cnam.addTo(mymap) // on ajoute le marqueur à la carte
+
+
+
