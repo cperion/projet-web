@@ -3,14 +3,11 @@
 var mymap = L.map('map').setView([48.86, 2.35], 13);
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
         '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
         'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     id: 'mapbox.streets'
 }).addTo(mymap);
-
-// --- LES MARQUEURS --- declaration
 
 // variables de visibilite
 
@@ -20,6 +17,33 @@ var rosslynVisible = false;
 var jerusalemVisible = false;
 var herjolfsnesVisible = false;
 var newportVisible = false;
+
+// fonction de visibilité
+
+function show() {
+    if (romeVisible && !mymap.hasLayer(marker_rome)) {
+        marker_rome.addTo(mymap);
+    }
+    if (veniseVisible && !mymap.hasLayer(marker_venise)) {
+        marker_venise.addTo(mymap);
+    }
+    if (rosslynVisible && !mymap.hasLayer(marker_rosslyn)) {
+        marker_rosslyn.addTo(mymap);
+    }
+    if (jerusalemVisible && !mymap.hasLayer(marker_jerusalem)) {
+        marker_jerusalem.addTo(mymap);
+    }
+    if (herjolfsnesVisible && !mymap.hasLayer(marker_herjolfsnes)) {
+        marker_herjolfsnes.addTo(mymap);
+    }
+    if (newportVisible && !mymap.hasLayer(marker_newport)) {
+        marker_newport.addTo(mymap);
+    }
+}
+
+mymap.addEventListener(onmousewheel, show)
+
+// --- LES MARQUEURS --- declaration
 
 // Premier marqueur : CNAM
 
@@ -63,14 +87,13 @@ var marker_herjolfsnes = L.marker([-44.4666, 59.9833]);
 marker_herjolfsnes.bindPopup("Herjolfsnes").openPopup();
 marker_herjolfsnes.on("click", clickOnHERJOLFSNES);
 
-
 // Evenements
 var inventory = document.getElementById('inventory');
 
 function clickOnCNAM(e) {
     alert("Vous visitez le musée et tombez sur une étrange carte !");
     romeVisible = true;
-    add_obj_invent(inventory,"carte_forum_romain.jpg");
+    add_obj_invent(inventory,"img/carte_forum_romain.jpg");
 }
 
 function clickOnROME(e) {
@@ -125,10 +148,6 @@ function add_obj_invent(inventory,image){
   inventory.appendChild(obj);
 }
 
-
 // LES MARQUEURS --- affichage
 alert("Aujourd'hui a lieu une exposition sur les globes au CNAM");
 marker_cnam.addTo(mymap) // on ajoute le marqueur à la carte
-
-
-
