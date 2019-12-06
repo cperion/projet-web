@@ -2,13 +2,9 @@
 
 var mymap = L.map('map').setView([48.86, 2.35], 13);
 
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-        '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    id: 'mapbox.streets'
-}).addTo(mymap);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
 
 // --- LES MARQUEURS --- declaration
 
@@ -92,11 +88,18 @@ function clickOnVENISE(e) {
 }
 
 function clickOnROSSLYN(e) {
+  /** énigme, pour avoir le marqueur de Jérusalem visible il faut déchiffrer le parchemin */
     alert("En visitant la chapelle vous tombez sur un parchemin bizarre !");
     var parchemin = document.createElement('IFRAME');
     parchemin.src = "parchemin.html";
-    document.body.appendChild(iframe);
-    jerusalemVisible = true;
+    document.body.appendChild(parchemin);
+    parchemin.addEventListener("click", function(){
+
+    })
+    if(){
+      jerusalemVisible = true;
+    }
+
 }
 
 function clickOnJERUSALEM(e) {
@@ -129,6 +132,3 @@ function add_obj_invent(inventory,image){
 // LES MARQUEURS --- affichage
 alert("Aujourd'hui a lieu une exposition sur les globes au CNAM");
 marker_cnam.addTo(mymap) // on ajoute le marqueur à la carte
-
-
-
