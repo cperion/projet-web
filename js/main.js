@@ -5,6 +5,134 @@ var mymap = L.map('map').setView([48.86, 2.35], 13);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(mymap);
+
+
+// Les icônes
+
+var icon_cnam = L.icon({
+    iconUrl: 'img/carte_forum_romain.jpg',
+    //shadowUrl: 'img/carte_forum_romain.jpg',
+
+    iconSize: [38, 38], // size of the icon
+    //shadowSize: [50, 64], // size of the shadow
+    //iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+    //shadowAnchor: [4, 62],  // the same for the shadow
+    //popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+var icon_rome = L.icon({
+    iconUrl: 'img/carte_forum_romain.jpg',
+    //shadowUrl: 'img/carte_forum_romain.jpg',
+
+    iconSize: [38, 38], // size of the icon
+    //shadowSize: [50, 64], // size of the shadow
+    //iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+    //shadowAnchor: [4, 62],  // the same for the shadow
+    //popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+var icon_venise = L.icon({
+    iconUrl: 'img/carte_forum_romain.jpg',
+    //shadowUrl: 'img/carte_forum_romain.jpg',
+
+    iconSize: [38, 38], // size of the icon
+    //shadowSize: [50, 64], // size of the shadow
+    //iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+    //shadowAnchor: [4, 62],  // the same for the shadow
+    //popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+var icon_rosslyn = L.icon({
+    iconUrl: 'img/carte_forum_romain.jpg',
+    //shadowUrl: 'img/carte_forum_romain.jpg',
+
+    iconSize: [38, 38], // size of the icon
+    //shadowSize: [50, 64], // size of the shadow
+    //iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+    //shadowAnchor: [4, 62],  // the same for the shadow
+    //popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+var icon_jerusalem = L.icon({
+    iconUrl: 'img/carte_forum_romain.jpg',
+    //shadowUrl: 'img/carte_forum_romain.jpg',
+
+    iconSize: [38, 38], // size of the icon
+    //shadowSize: [50, 64], // size of the shadow
+    //iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+    //shadowAnchor: [4, 62],  // the same for the shadow
+    //popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+var icon_herjolfsnes = L.icon({
+    iconUrl: 'img/carte_forum_romain.jpg',
+    //shadowUrl: 'img/carte_forum_romain.jpg',
+
+    iconSize: [38, 38], // size of the icon
+    //shadowSize: [50, 64], // size of the shadow
+    //iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+    //shadowAnchor: [4, 62],  // the same for the shadow
+    //popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+var icon_newport = L.icon({
+    iconUrl: 'img/carte_forum_romain.jpg',
+    //shadowUrl: 'img/carte_forum_romain.jpg',
+
+    iconSize: [38, 38], // size of the icon
+    //shadowSize: [50, 64], // size of the shadow
+    //iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+    //shadowAnchor: [4, 62],  // the same for the shadow
+    //popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+// Premier marqueur : CNAM
+
+var marker_cnam = L.marker([48.867008, 2.355349], { icon: icon_cnam });
+marker_cnam.bindPopup("Conservatoire National des Arts et Métiers").openPopup();
+marker_cnam.on("click", clickOnCNAM);
+
+// Deuxieme marqueur : Rome
+
+var marker_rome = L.marker([41.8941, 12.4854], { icon: icon_rome });
+marker_rome.bindPopup("Forum Romain").openPopup();
+marker_rome.on("click", clickOnROME);
+
+// Troisieme marqueur : Venise
+
+var marker_venise = L.marker([45.4385, 12.3275], { icon: icon_venise });
+marker_venise.bindPopup("Venise").openPopup();
+marker_venise.on("click", clickOnVENISE);
+
+// Quatrième marqueur : Rosslyn
+
+var marker_rosslyn = L.marker([55.8560, -3.1602], { icon: icon_rosslyn });
+marker_rosslyn.bindPopup("Rosslyn").openPopup();
+marker_rosslyn.on("click", clickOnROSSLYN);
+
+// Cinquième marqueur : Jérusalem
+
+var marker_jerusalem = L.marker([31.7797, 35.2295], { icon: icon_jerusalem });
+marker_jerusalem.bindPopup("Jerusalem").openPopup();
+marker_jerusalem.on("click", clickOnJERUSALEM);
+
+// Sixième marqueur : Newport
+
+var marker_newport = L.marker([41.4867, -71.3099], { icon: icon_newport });
+marker_newport.bindPopup("Newport").openPopup();
+marker_newport.on("click", clickOnNEWPORT);
+
+// Septieme marqueur : Herjolfsnes
+
+var marker_herjolfsnes = L.marker([-44.4666, 59.9833], { icon: icon_herjolfsnes });
+marker_herjolfsnes.bindPopup("Herjolfsnes").openPopup();
+marker_herjolfsnes.on("click", clickOnHERJOLFSNES);
+
+
+
+
+
+
 // variables de visibilite
 
 level = 12.
@@ -16,7 +144,7 @@ var jerusalemVisible = false;
 var herjolfsnesVisible = false;
 var newportVisible = false;
 
-// fonction de visibilité
+// fonctions de visibilité
 
 function show() {
     console.log(mymap.getZoom())
@@ -43,47 +171,7 @@ function show() {
 mymap.on('zoomend', show);
 // --- LES MARQUEURS --- declaration
 
-// Premier marqueur : CNAM
 
-var marker_cnam = L.marker([48.867008, 2.355349]);
-marker_cnam.bindPopup("Conservatoire National des Arts et Métiers").openPopup();
-marker_cnam.on("click", clickOnCNAM);
-
-// Deuxieme marqueur : Rome
-
-var marker_rome= L.marker([41.8941, 12.4854]);
-marker_rome.bindPopup("Forum Romain").openPopup();
-marker_rome.on("click", clickOnROME);
-
-// Troisieme marqueur : Venise
-
-var marker_venise = L.marker([45.4385, 12.3275]);
-marker_venise.bindPopup("Venise").openPopup();
-marker_venise.on("click", clickOnVENISE);
-
-// Quatrième marqueur : Rosslyn
-
-var marker_rosslyn = L.marker([55.8560, -3.1602]);
-marker_rosslyn.bindPopup("Rosslyn").openPopup();
-marker_rosslyn.on("click", clickOnROSSLYN);
-
-// Cinquième marqueur : Jérusalem
-
-var marker_jerusalem = L.marker([31.7797, 35.2295]);
-marker_jerusalem.bindPopup("Jerusalem").openPopup();
-marker_jerusalem.on("click", clickOnJERUSALEM);
-
-// Sixième marqueur : Newport
-
-var marker_newport = L.marker([41.4867, -71.3099]);
-marker_newport.bindPopup("Newport").openPopup();
-marker_newport.on("click", clickOnNEWPORT);
-
-// Septieme marqueur : Herjolfsnes
-
-var marker_herjolfsnes = L.marker([-44.4666, 59.9833]);
-marker_herjolfsnes.bindPopup("Herjolfsnes").openPopup();
-marker_herjolfsnes.on("click", clickOnHERJOLFSNES);
 
 // Evenements
 var inventory = document.getElementById('inventory');
