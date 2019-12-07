@@ -2,20 +2,12 @@
 
 var mymap = L.map('map').setView([48.86, 2.35], 13);
 
-<<<<<<< HEAD
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
-=======
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-        '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    id: 'mapbox.streets'
 }).addTo(mymap);
->>>>>>> cfc6436facbbc2d301726f3fc51a24a82df3993e
-
 // variables de visibilite
+
+level = 12.
 
 var romeVisible = false;
 var veniseVisible = false;
@@ -27,28 +19,28 @@ var newportVisible = false;
 // fonction de visibilité
 
 function show() {
-    if (romeVisible && !mymap.hasLayer(marker_rome)) {
+    console.log(mymap.getZoom())
+    if (romeVisible && !mymap.hasLayer(marker_rome) && mymap.getZoom() >= level && mymap.getBounds().contains(marker_rome.getLatLng())) {
         marker_rome.addTo(mymap);
     }
-    if (veniseVisible && !mymap.hasLayer(marker_venise)) {
+    if (veniseVisible && !mymap.hasLayer(marker_venise) && mymap.getZoom() >= level && mymap.getBounds().contains(marker_venise.getLatLng())) {
         marker_venise.addTo(mymap);
     }
-    if (rosslynVisible && !mymap.hasLayer(marker_rosslyn)) {
+    if (rosslynVisible && !mymap.hasLayer(marker_rosslyn) && mymap.getZoom() >= level && mymap.getBounds().contains(marker_rosslyn.getLatLng())) {
         marker_rosslyn.addTo(mymap);
     }
-    if (jerusalemVisible && !mymap.hasLayer(marker_jerusalem)) {
+    if (jerusalemVisible && !mymap.hasLayer(marker_jerusalem) && mymap.getZoom() >= level && mymap.getBounds().contains(marker_jerusalem.getLatLng())) {
         marker_jerusalem.addTo(mymap);
     }
-    if (herjolfsnesVisible && !mymap.hasLayer(marker_herjolfsnes)) {
+    if (herjolfsnesVisible && !mymap.hasLayer(marker_herjolfsnes) && mymap.getZoom() >= level && mymap.getBounds().contains(marker_herjolfsnes.getLatLng())) {
         marker_herjolfsnes.addTo(mymap);
     }
-    if (newportVisible && !mymap.hasLayer(marker_newport)) {
+    if (newportVisible && !mymap.hasLayer(marker_newport) && mymap.getZoom() >= level && mymap.getBounds().contains(marker_newport.getLatLng())) {
         marker_newport.addTo(mymap);
     }
 }
 
-mymap.addEventListener(onmousewheel, show)
-
+mymap.on('zoomend', show);
 // --- LES MARQUEURS --- declaration
 
 // Premier marqueur : CNAM
@@ -105,7 +97,7 @@ function clickOnCNAM(e) {
 function clickOnROME(e) {
   /** fct à terminer, l'idée c'est de charger l'icône dans l'inventaire et que lorsqu'on clique dessus le code s'affiche et on doit remplir le bon déchiffrement dans une zone de texte */
     alert("ROMMMME");
-    obj = add_obj_invent(inventory,"code_statue_cesar.jpg");
+    var obj = add_obj_invent(inventory,"code_statue_cesar.jpg");
     obj.addEventListener("click",function(){
       if(input.value=="zeno venise"){
         var input = document.createElement("INPUT");
@@ -129,7 +121,7 @@ function clickOnROSSLYN(e) {
     parchemin.addEventListener("click", function(){
 
     })
-    if(){
+    if(zoom >= 17 ){
       jerusalemVisible = true;
     }
 
@@ -163,8 +155,4 @@ function add_obj_invent(inventory,image){
 
 // LES MARQUEURS --- affichage
 alert("Aujourd'hui a lieu une exposition sur les globes au CNAM");
-<<<<<<< HEAD
 marker_cnam.addTo(mymap) // on ajoute le marqueur à la carte
-=======
-marker_cnam.addTo(mymap) // on ajoute le marqueur à la carte
->>>>>>> cfc6436facbbc2d301726f3fc51a24a82df3993e
