@@ -171,7 +171,7 @@ function clickOnIndice(){
 
 function clickOnCNAM() {
     alert("Vous visitez le musée et tombez sur une étrange carte !");
-    var icon_map = add_obj_invent(inventory,"zenoMap.jpg");
+    var icon_map = add_obj_invent(inventory,"../img/zenoMap.jpg");
     alert("Au dos, il est écrit: 'La clé se trouve dans le forum romain'");
     romeVisible = true;
 }
@@ -182,13 +182,13 @@ function clickOnROME() {
   var c = 0;
   alert("Arrivé à Rome, vous vous rendez sur le forum romain comme l'indique votre carte.");
   alert("Vous cherchez un indice sur chacun des monuments.")
-  icone_carte = add_obj_invent(inventory,"icone_carte_forum.jpg");
+  icone_carte = add_obj_invent(inventory,"../img/icone_carte_forum.jpg");
   icone_carte.height = icone_carte.naturalHeight*0.5;
   icone_carte.width = icone_carte.naturalWidth*0.5;
   icone_carte.addEventListener("click", function(){
     c = c+1;
     if(c==1){
-      carte_forum_romain = add_obj_invent(info, "carte_forum_romain.jpg");
+      carte_forum_romain = add_obj_invent(info, "../img/carte_forum_romain.jpg");
       carte_forum_romain.height = carte_forum_romain.naturalHeight*0.5;
       carte_forum_romain.width = carte_forum_romain.naturalWidth*0.5;
       carte_forum_romain.style.alignItems = "baseline";
@@ -278,7 +278,7 @@ function clickOnVENISE() {
 
 function clickOnROSSLYN() {
     alert("En visitant la chapelle vous tombez sur un parchemin bizarre !");
-    var icone_parchemin = add_obj_invent(inventory,"parchemin2.jpg");
+    var icone_parchemin = add_obj_invent(inventory,"../img/parchemin2.jpg");
     var c = 0;
     icone_parchemin.width = icone_parchemin.naturalWidth*0.1;
     icone_parchemin.height = icone_parchemin.naturalHeight*0.1;
@@ -311,7 +311,6 @@ function decryptParchemin(txt,lien_parchemin,submit){
     info.removeChild(lien_parchemin);
     info.removeChild(txt);
     info.removeChild(submit);
-    jerusalemVisible = true;
   }else{
     alert("Ce n'est pas le bon mot !");
   }
