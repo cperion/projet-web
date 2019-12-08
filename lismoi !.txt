@@ -1,2 +1,7 @@
------ db -----
-pour trouver la bdd obj du jeu aller dans mysql puis geoEscape
+Pour jouer au jeu il faut :
+
+-Servir ce dossier sur un serveur php
+-Charger la sauvegarde de base de donnée obj.sql
+-Servir la base de données sur un serveur mysql
+-Visiter la page servie
+-S'amuser.
