@@ -311,6 +311,7 @@ function decryptParchemin(txt,lien_parchemin,submit){
     info.removeChild(lien_parchemin);
     info.removeChild(txt);
     info.removeChild(submit);
+    jerusalemVisible = true;
   }else{
     alert("Ce n'est pas le bon mot !");
   }
