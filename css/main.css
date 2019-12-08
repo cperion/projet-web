@@ -3,8 +3,10 @@
 }
 
 #playbutton {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 40%;
+    margin-top: 10%;
+    height: 100px;
+    width: 20%;
 
 }
 
@@ -38,7 +40,7 @@
 }
 
 .game {
-    background-color: rgba(0,0,0,.5);
+    background-color: rgba(0,0,0,.1);
     border-radius: 50px;
     position: absolute;
     top: 10%;
@@ -59,3 +61,13 @@
     margin-left: 20px;
     display: inline;
 }
+
+.whole {
+    background-image: url('../img/map_2.jpg');
+}
+
+.inside  {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 25px;
+}
+
