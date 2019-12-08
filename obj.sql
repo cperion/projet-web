@@ -78,7 +78,7 @@ COMMIT;
 CREATE TABLE `scores` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(999) NOT NULL,
+  `password` varchar(999) NOT NULL,
   `time` float NOT NULL,
   `difficulty` float NOT NULL,
-  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
