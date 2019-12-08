@@ -92,79 +92,55 @@ marker_herjolfsnes.on("click", clickOnHERJOLFSNES);
 
 var icon_cnam = L.icon({
     iconUrl: 'img/carte_forum_romain.jpg',
-    //shadowUrl: 'img/carte_forum_romain.jpg',
-
+    
     iconSize: [38, 38], // size of the icon
-    //shadowSize: [50, 64], // size of the shadow
-    //iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
-    //shadowAnchor: [4, 62],  // the same for the shadow
-    //popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+    
 });
 
 var icon_rome = L.icon({
     iconUrl: 'img/carte_forum_romain.jpg',
-    //shadowUrl: 'img/carte_forum_romain.jpg',
 
     iconSize: [38, 38], // size of the icon
-    //shadowSize: [50, 64], // size of the shadow
-    //iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
-    //shadowAnchor: [4, 62],  // the same for the shadow
-    //popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+
 });
 
 var icon_venise = L.icon({
     iconUrl: 'img/carte_forum_romain.jpg',
-    //shadowUrl: 'img/carte_forum_romain.jpg',
+
 
     iconSize: [38, 38], // size of the icon
-    //shadowSize: [50, 64], // size of the shadow
-    //iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
-    //shadowAnchor: [4, 62],  // the same for the shadow
-    //popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+
 });
 
 var icon_rosslyn = L.icon({
     iconUrl: 'img/carte_forum_romain.jpg',
-    //shadowUrl: 'img/carte_forum_romain.jpg',
+
 
     iconSize: [38, 38], // size of the icon
-    //shadowSize: [50, 64], // size of the shadow
-    //iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
-    //shadowAnchor: [4, 62],  // the same for the shadow
-    //popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+ 
 });
 
 var icon_jerusalem = L.icon({
     iconUrl: 'img/carte_forum_romain.jpg',
-    //shadowUrl: 'img/carte_forum_romain.jpg',
+
 
     iconSize: [38, 38], // size of the icon
-    //shadowSize: [50, 64], // size of the shadow
-    //iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
-    //shadowAnchor: [4, 62],  // the same for the shadow
-    //popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+
 });
 
 var icon_herjolfsnes = L.icon({
     iconUrl: 'img/carte_forum_romain.jpg',
-    //shadowUrl: 'img/carte_forum_romain.jpg',
+
 
     iconSize: [38, 38], // size of the icon
-    //shadowSize: [50, 64], // size of the shadow
-    //iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
-    //shadowAnchor: [4, 62],  // the same for the shadow
-    //popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+
 });
 
 var icon_newport = L.icon({
     iconUrl: 'img/carte_forum_romain.jpg',
-    //shadowUrl: 'img/carte_forum_romain.jpg',
 
-    iconSize: [38, 38], // size of the icon
-    //shadowSize: [50, 64], // size of the shadow
-    //iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
-    //shadowAnchor: [4, 62],  // the same for the shadow
-    //popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+    iconSize: [38, 38], 
+
 });
 
 // Evenements

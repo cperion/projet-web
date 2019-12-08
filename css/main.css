@@ -34,9 +34,7 @@
     background-image: url("../img/wood.jpg");
     grid-column: 1 / span 3;
     grid-row: 2;
-
     border-radius: 50px;
-
 }
 
 .game {
