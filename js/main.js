@@ -1,5 +1,7 @@
 // On fait la carte
 
+var time;
+
 var mymap = L.map('map').setView([48.86, 2.35], 5);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -366,6 +368,25 @@ function add_obj_invent(inventory,image){
   obj.style.alignItems = "flex-start";
   inventory.appendChild(obj);
   return obj;
+}
+
+
+function win() {
+  alert( "Bravo !!!" )
+  var pseudo = prompt("Entrez votre pseudo")
+  var passwd = prompt('Entrez votre mot ce passe')
+  var data = new FormData;
+  data.append('name', pseudo);
+  data.append('password', passwd);
+  data.append('time', time);
+  data.append('difficulty', level);
+
+  fetch('../score.php', {
+    method: 'post',
+    body: data
+  }).then(e => {
+    console.log(e)
+  })
 }
 
 // LES MARQUEURS --- affichage
