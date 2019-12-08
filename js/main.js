@@ -168,8 +168,30 @@ var icon_newport = L.icon({
 });
 
 // Evenements
+var start = new Date().toLocaleTimeString('fr');
+
 var inventory = document.getElementById('inventory');
 var info = document.getElementById('info');
+var indice = document.getElementById('indice');
+
+var getIndice = document.createElement("INPUT");
+getIndice.type = "submit";
+getIndice.value = "Demander de l'aide";
+indice.appendChild(getIndice);
+
+function clickOnIndice(){
+  indice.addEventListener("click", function(){
+    if(romeVisible==true && veniseVisible==false){
+      alert("13 désigne la clé, le nom du temple le code.");
+    }else if(rosslynVisible==true && jerusalemVisible==false){
+      alert("Ctrl+U.");
+    }else if(newportVisible==true && herjolfsnesVisible==false){
+      alert("Un traducteur serait le bienvenue...");
+    }
+  });
+}
+
+/** Fonctions CNAM */
 
 function clickOnCNAM() {
     alert("Vous visitez le musée et tombez sur une étrange carte !");
@@ -331,6 +353,8 @@ function clickOnHERJOLFSNES(e) {
     alert("Vous avez trouvé une vieille colonie viking où se trouve un monastère. Vous décidez de vous y rendre.");
     alert("Sur la porte fermée du monastère vous retrouvez la même carte que vous avez trouvé au CNAM.")
     alert("Sur celle-ci une annotation écrite en gros sur la carte dit: 'La carte des frères Zeno est une fausse carte'");
+    var end = new Date().toLocaleTimeString('fr');
+    alert("Vous avez mis "+(start-end)+" pour finir le jeu !");
 }
 
 function clickOnNEWPORT(e) {
