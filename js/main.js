@@ -1,11 +1,90 @@
 // On fait la carte
 
-var mymap = L.map('map').setView([48.86, 2.35], 13);
+var mymap = L.map('map').setView([48.86, 2.35], 5);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(mymap);
 
+// variables de visibilite
+
+level = 12
+
+var romeVisible = false;
+var veniseVisible = false;
+var rosslynVisible = false;
+var jerusalemVisible = false;
+var herjolfsnesVisible = false;
+var newportVisible = false;
+
+// fonctions de visibilité
+
+function show() {
+    console.log(mymap.getZoom())
+    if (romeVisible && !mymap.hasLayer(marker_rome) && mymap.getZoom() >= level && mymap.getBounds().contains(marker_rome.getLatLng())) {
+        marker_rome.addTo(mymap);
+    }
+    if (veniseVisible && !mymap.hasLayer(marker_venise) && mymap.getZoom() >= level && mymap.getBounds().contains(marker_venise.getLatLng())) {
+        marker_venise.addTo(mymap);
+    }
+    if (rosslynVisible && !mymap.hasLayer(marker_rosslyn) && mymap.getZoom() >= level && mymap.getBounds().contains(marker_rosslyn.getLatLng())) {
+        marker_rosslyn.addTo(mymap);
+    }
+    if (jerusalemVisible && !mymap.hasLayer(marker_jerusalem) && mymap.getZoom() >= level && mymap.getBounds().contains(marker_jerusalem.getLatLng())) {
+        marker_jerusalem.addTo(mymap);
+    }
+    if (herjolfsnesVisible && !mymap.hasLayer(marker_herjolfsnes) && mymap.getZoom() >= level-2 && mymap.getBounds().contains(marker_herjolfsnes.getLatLng())) {
+        marker_herjolfsnes.addTo(mymap);
+    }
+    if (newportVisible && !mymap.hasLayer(marker_newport) && mymap.getZoom() >= level && mymap.getBounds().contains(marker_newport.getLatLng())) {
+        marker_newport.addTo(mymap);
+    }
+}
+
+mymap.on('zoomend', show);
+
+// --- LES MARQUEURS --- declaration
+// Premier marqueur : CNAM
+
+var marker_cnam = L.marker([48.867008, 2.355349]);
+marker_cnam.bindPopup("Conservatoire National des Arts et Métiers").openPopup();
+marker_cnam.on("click", clickOnCNAM);
+
+// Deuxieme marqueur : Rome
+
+var marker_rome= L.marker([41.8941, 12.4854]);
+marker_rome.bindPopup("Forum Romain").openPopup();
+marker_rome.on("click", clickOnROME);
+
+// Troisieme marqueur : Venise
+
+var marker_venise = L.marker([45.4385, 12.3275]);
+marker_venise.bindPopup("Venise").openPopup();
+marker_venise.on("click", clickOnVENISE);
+
+// Quatrième marqueur : Rosslyn
+
+var marker_rosslyn = L.marker([55.8560, -3.1602]);
+marker_rosslyn.bindPopup("Rosslyn").openPopup();
+marker_rosslyn.on("click", clickOnROSSLYN);
+
+// Cinquième marqueur : Jérusalem
+
+var marker_jerusalem = L.marker([31.7797, 35.2295]);
+marker_jerusalem.bindPopup("Jerusalem").openPopup();
+marker_jerusalem.on("click", clickOnJERUSALEM);
+
+// Sixième marqueur : Newport
+
+var marker_newport = L.marker([41.4867, -71.3099]);
+marker_newport.bindPopup("Newport").openPopup();
+marker_newport.on("click", clickOnNEWPORT);
+
+// Septieme marqueur : Herjolfsnes
+
+var marker_herjolfsnes = L.marker([59.9833, -44.4666]);
+marker_herjolfsnes.bindPopup("Herjolfsnes").openPopup();
+marker_herjolfsnes.on("click", clickOnHERJOLFSNES);
 
 // Les icônes
 
@@ -86,151 +165,187 @@ var icon_newport = L.icon({
     //popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
-// Premier marqueur : CNAM
-
-var marker_cnam = L.marker([48.867008, 2.355349], { icon: icon_cnam });
-marker_cnam.bindPopup("Conservatoire National des Arts et Métiers").openPopup();
-marker_cnam.on("click", clickOnCNAM);
-
-// Deuxieme marqueur : Rome
-
-var marker_rome = L.marker([41.8941, 12.4854], { icon: icon_rome });
-marker_rome.bindPopup("Forum Romain").openPopup();
-marker_rome.on("click", clickOnROME);
-
-// Troisieme marqueur : Venise
-
-var marker_venise = L.marker([45.4385, 12.3275], { icon: icon_venise });
-marker_venise.bindPopup("Venise").openPopup();
-marker_venise.on("click", clickOnVENISE);
-
-// Quatrième marqueur : Rosslyn
-
-var marker_rosslyn = L.marker([55.8560, -3.1602], { icon: icon_rosslyn });
-marker_rosslyn.bindPopup("Rosslyn").openPopup();
-marker_rosslyn.on("click", clickOnROSSLYN);
-
-// Cinquième marqueur : Jérusalem
-
-var marker_jerusalem = L.marker([31.7797, 35.2295], { icon: icon_jerusalem });
-marker_jerusalem.bindPopup("Jerusalem").openPopup();
-marker_jerusalem.on("click", clickOnJERUSALEM);
-
-// Sixième marqueur : Newport
-
-var marker_newport = L.marker([41.4867, -71.3099], { icon: icon_newport });
-marker_newport.bindPopup("Newport").openPopup();
-marker_newport.on("click", clickOnNEWPORT);
-
-// Septieme marqueur : Herjolfsnes
-
-var marker_herjolfsnes = L.marker([-44.4666, 59.9833], { icon: icon_herjolfsnes });
-marker_herjolfsnes.bindPopup("Herjolfsnes").openPopup();
-marker_herjolfsnes.on("click", clickOnHERJOLFSNES);
-
-
-
-
-
-
-// variables de visibilite
-
-level = 12.
-
-var romeVisible = false;
-var veniseVisible = false;
-var rosslynVisible = false;
-var jerusalemVisible = false;
-var herjolfsnesVisible = false;
-var newportVisible = false;
-
-// fonctions de visibilité
-
-function show() {
-    console.log(mymap.getZoom())
-    if (romeVisible && !mymap.hasLayer(marker_rome) && mymap.getZoom() >= level && mymap.getBounds().contains(marker_rome.getLatLng())) {
-        marker_rome.addTo(mymap);
-    }
-    if (veniseVisible && !mymap.hasLayer(marker_venise) && mymap.getZoom() >= level && mymap.getBounds().contains(marker_venise.getLatLng())) {
-        marker_venise.addTo(mymap);
-    }
-    if (rosslynVisible && !mymap.hasLayer(marker_rosslyn) && mymap.getZoom() >= level && mymap.getBounds().contains(marker_rosslyn.getLatLng())) {
-        marker_rosslyn.addTo(mymap);
-    }
-    if (jerusalemVisible && !mymap.hasLayer(marker_jerusalem) && mymap.getZoom() >= level && mymap.getBounds().contains(marker_jerusalem.getLatLng())) {
-        marker_jerusalem.addTo(mymap);
-    }
-    if (herjolfsnesVisible && !mymap.hasLayer(marker_herjolfsnes) && mymap.getZoom() >= level && mymap.getBounds().contains(marker_herjolfsnes.getLatLng())) {
-        marker_herjolfsnes.addTo(mymap);
-    }
-    if (newportVisible && !mymap.hasLayer(marker_newport) && mymap.getZoom() >= level && mymap.getBounds().contains(marker_newport.getLatLng())) {
-        marker_newport.addTo(mymap);
-    }
-}
-
-mymap.on('zoomend', show);
-// --- LES MARQUEURS --- declaration
-
-
-
 // Evenements
 var inventory = document.getElementById('inventory');
+var info = document.getElementById('info');
 
-function clickOnCNAM(e) {
+function clickOnCNAM() {
     alert("Vous visitez le musée et tombez sur une étrange carte !");
+    var icon_map = add_obj_invent(inventory,"zenoMap.jpg");
+    alert("Au dos, il est écrit: 'La clé se trouve dans le forum romain'");
     romeVisible = true;
-    add_obj_invent(inventory,"img/carte_forum_romain.jpg");
 }
 
-function clickOnROME(e) {
-  /** fct à terminer, l'idée c'est de charger l'icône dans l'inventaire et que lorsqu'on clique dessus le code s'affiche et on doit remplir le bon déchiffrement dans une zone de texte */
-    alert("ROMMMME");
-    var obj = add_obj_invent(inventory,"code_statue_cesar.jpg");
-    obj.addEventListener("click",function(){
-      if(input.value=="zeno venise"){
-        var input = document.createElement("INPUT");
-        input.setAttribute("type", "text");
-          veniseVisible = true;
-      };
-    })
+/** Fonctions Rome */
+
+function clickOnROME() {
+  alert("Arrivé à Rome, vous vous rendez sur le forum romain comme l'indique votre carte.");
+  alert("Vous cherchez un indice sur chacun des monuments.")
+  icone_carte = add_obj_invent(inventory,"icone_carte_forum.jpg");
+  icone_carte.height = icone_carte.naturalHeight*0.5;
+  icone_carte.width = icone_carte.naturalWidth*0.5;
+  icone_carte.addEventListener("click", function(){
+    carte_forum_romain = add_obj_invent(info, "carte_forum_romain.jpg");
+    carte_forum_romain.height = carte_forum_romain.naturalHeight*0.5;
+    carte_forum_romain.width = carte_forum_romain.naturalWidth*0.5;
+    chooseMonuments(info);
+  });
 }
 
-function clickOnVENISE(e) {
-    alert("VENEZ, Venise ...");
+function chooseMonuments(info){
+  var temple_ant_fstne = document.createElement("INPUT");
+  temple_ant_fstne.type = "submit";
+  temple_ant_fstne.value = "Temple d'Antonin et Faustine";
+  info.appendChild(temple_ant_fstne);
+  var temple_csr = document.createElement("INPUT");
+  temple_csr.type = "submit";
+  temple_csr.value = "Temple de César";
+  info.appendChild(temple_csr);
+  var rostres = document.createElement("INPUT");
+  rostres.type = "submit";
+  rostres.value = "Rostres";
+  info.appendChild(rostres);
+  var arc = document.createElement("INPUT");
+  arc.type = "submit";
+  arc.value = "Arc de Septime Sévère";
+  info.appendChild(arc);
+  var temple_strn = document.createElement("INPUT");
+  temple_strn.type = "submit";
+  temple_strn.value = "Temple de Saturne";
+  info.appendChild(temple_strn );
+  list_monuments = [temple_csr,temple_strn,temple_ant_fstne,rostres,arc,];
+  for(let i = 0; i < list_monuments.length; i++){
+    if(list_monuments[i] != temple_csr){
+      list_monuments[i].addEventListener("click", notCaesar.bind(null,info,list_monuments[i],list_monuments,i));
+    }else if (list_monuments[i] == temple_csr) {
+      list_monuments[i].addEventListener("click", ifCaesar.bind(null,info,list_monuments));
+    };
+  };
+}
+
+function ifCaesar(info,list_monuments){
+  info.removeChild(carte_forum_romain);
+  for (let i = 0; i < list_monuments.length; i++){
+    console.log(list_monuments[i]);
+    info.removeChild(list_monuments[i]);
+  };
+  var input = document.createElement("INPUT");
+  var submit = document.createElement("INPUT");
+  input.setAttribute("type","text");
+  submit.value = "Envoyer";
+  submit.type = "submit";
+  info.appendChild(input);
+  info.appendChild(submit);
+  alert("Un message est écrit au bas d'une statue de Jules César: mrab iravfr 13");
+  submit.addEventListener("click", decryptCodeCeasar.bind(null,input,submit));
+};
+
+function notCaesar(info,monument,list_monuments,id){
+  alert("Vous ne trouvez rien d'intéressant...");
+  info.removeChild(monument);
+  console.log(monument);
+  list_monuments.splice(id,1);
+  console.log(list_monuments);
+}
+
+function decryptCodeCeasar(input,submit){
+  if(input.value == "zeno venise"){
+    veniseVisible = true;
+    alert("Vous devez mettre en lien le mot 'zeno' et la ville de Venise...");
+    info.removeChild(input);
+    info.removeChild(submit);
+  }else {
+    alert("Ce n'est pas le bon message !");
+  };
+}
+
+/** Fonctions Venise */
+
+function clickOnVENISE() {
+    alert("Le palais de la famille Zeno se trouve en effet à Venise !");
+    alert("Vous ne pouvez pas le visiter mais tomber sur un historien à qui vous raconter votre épopée.");
+    alert("La carte que vous avez trouvé au CNAM se trouve avoir été créé par un membre de la famille Zeno !");
+    alert("L'historien vous conseille de vous rendre à la chapelle de Rosslyn, ville écossaise où a été hébegé un des membres de la famille.");
     rosslynVisible = true;
 }
 
-function clickOnROSSLYN(e) {
-  /** énigme, pour avoir le marqueur de Jérusalem visible il faut déchiffrer le parchemin */
+/** Fonctions Rosslyn */
+
+function clickOnROSSLYN() {
     alert("En visitant la chapelle vous tombez sur un parchemin bizarre !");
-    var parchemin = document.createElement('IFRAME');
-    parchemin.src = "parchemin.html";
-    document.body.appendChild(parchemin);
-    parchemin.addEventListener("click", function(){
-
-    })
-    if(zoom >= 17 ){
-      jerusalemVisible = true;
-    }
-
+    var icone_parchemin = add_obj_invent(inventory,"parchemin2.jpg");
+    icone_parchemin.width = icone_parchemin.naturalWidth*0.1;
+    icone_parchemin.height = icone_parchemin.naturalHeight*0.1;
+    icone_parchemin.addEventListener("click", clickOnParchemin.bind(null,icone_parchemin));
 }
 
+function clickOnParchemin(parchemin){
+  var lien_parchemin = document.createElement("A");
+  lien_parchemin.href = "parchemin.html";
+  lien_parchemin.text = "Parchemin de Rosslyn";
+  lien_parchemin.target = "_blank";
+  info.appendChild(lien_parchemin);
+  var input2 = document.createElement("INPUT");
+  var submit2 = document.createElement("INPUT");
+  input2.setAttribute("type","text");
+  submit2.value = "Entrer le mot de passe";
+  submit2.type = "submit";
+  info.appendChild(input2);
+  info.appendChild(submit2);
+  submit2.addEventListener("click", decryptParchemin.bind(null,input2,lien_parchemin,submit2));
+}
+
+function decryptParchemin(txt,lien_parchemin,submit){
+  if(txt.value=="Jerusalem" || txt.value=="jerusalem" || txt.value=="Jérusalem" || txt.value=="jérusalem"){
+    alert("D'après le parchemin, la suite de votre enquête se déroule à Jérusalem.");
+    info.removeChild(lien_parchemin);
+    info.removeChild(txt);
+    info.removeChild(submit);
+  }else{
+    alert("Ce n'est pas le bon mot !");
+  }
+}
+
+/** etc...*/
+
 function clickOnJERUSALEM(e) {
-    alert("En allant visiter le St-Sépulcre, vous tombez sur un guide original qui se met à parler d'une tour qui se trouve aux US dont les plans de construction correspondent à ceux de la chapelle du St-Sépulcre.");
-    alert("Ce qui est étonnant c'est que cette chapelle aurait été construit avant la découverte de l'Amérique en 1492...");
+    alert("En allant visiter le St-Sépulcre, vous tombez sur un guide original qui se met à parler d'une tour qui se trouve aux US (Newport,Rhode Islands) dont les plans de construction correspondent à ceux de la chapelle du St-Sépulcre.");
+    alert("Ce qui est étonnant c'est que cette tour aurait été construit avant la découverte de l'Amérique en 1492...");
+    alert("Vous tombez sur une autre inscription où est écrit: '50km, N-W, Farewell Cape'");
     newportVisible = true;
 }
 
 function clickOnHERJOLFSNES(e) {
     alert("Vous avez trouvé une vieille colonie viking où se trouve un monastère. Vous décidez de vous y rendre.");
-    alert("Une liste de coordonnées géographiques se trouvent dans un manuscrit louche...")
-    herjolfsnesVisible = true;
+    alert("Sur la porte fermée du monastère vous retrouvez la même carte que vous avez trouvé au CNAM.")
+    alert("Sur celle-ci une annotation écrite en gros sur la carte dit: 'La carte des frères Zeno est une fausse carte'");
 }
 
 function clickOnNEWPORT(e) {
     alert("Vous vous approchez de la tour mais elle est entourée de barrières et nous sommes en plein jour...");
     /**conditon pour faire style on attend la nuit qui autorise la lecture du message */
-    alert("Après vous être introduit dans la tour, vous tombez nez à nez avec une inscription en langue micmac: maqamigew esgig")
+    alert("Après vous être introduit dans la tour, vous tombez nez à nez avec une inscription en langue micmac: maqamigew esgig");
+    var input3 = document.createElement("INPUT");
+    var submit3 = document.createElement("INPUT");
+    input3.setAttribute("type","text");
+    submit3.type = "submit";
+    submit3.value = "Vérifier la traduction";
+    info.appendChild(input3);
+    info.appendChild(submit3);
+    submit3.addEventListener("click", tradMiqmac.bind(null,input3,submit3));
+}
+
+function tradMiqmac(input,submit){
+  if(input.value=="terre verte"){
+    alert("Vous avez trouvé la bonne traduction, il ne vous reste plus qu'à trouver ce qu'elle indique !");
+    submit.value = "Vérifier la destination";
+    submit.addEventListener("click", verifDest.bind(null,input));
+  }else if(input.value=="Groenland" || input.value=="groenland"){
+    alert("C'est la bonne destination, en effet des vikings venant du Groenland auraient visité l'Amérique bien avant Christophe Collomb !");
+    herjolfsnesVisible = true;
+  }else{
+    alert("Ce n'est pas la bonne traduction !");
+  }
 }
 
 function add_obj_invent(inventory,image){
@@ -239,14 +354,9 @@ function add_obj_invent(inventory,image){
   var obj = document.createElement("IMG")
   obj.src = image;
   inventory.appendChild(obj);
+  return obj;
 }
 
 // LES MARQUEURS --- affichage
 alert("Aujourd'hui a lieu une exposition sur les globes au CNAM");
 marker_cnam.addTo(mymap) // on ajoute le marqueur à la carte
-
-
-function end() {
-    var user = prompt("Entrez votre pseudo")
-
-}
