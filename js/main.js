@@ -179,16 +179,21 @@ function clickOnCNAM() {
 /** Fonctions Rome */
 
 function clickOnROME() {
+  var c = 0;
   alert("Arrivé à Rome, vous vous rendez sur le forum romain comme l'indique votre carte.");
   alert("Vous cherchez un indice sur chacun des monuments.")
   icone_carte = add_obj_invent(inventory,"icone_carte_forum.jpg");
   icone_carte.height = icone_carte.naturalHeight*0.5;
   icone_carte.width = icone_carte.naturalWidth*0.5;
   icone_carte.addEventListener("click", function(){
-    carte_forum_romain = add_obj_invent(info, "carte_forum_romain.jpg");
-    carte_forum_romain.height = carte_forum_romain.naturalHeight*0.5;
-    carte_forum_romain.width = carte_forum_romain.naturalWidth*0.5;
-    chooseMonuments(info);
+    c = c+1;
+    if(c==1){
+      carte_forum_romain = add_obj_invent(info, "carte_forum_romain.jpg");
+      carte_forum_romain.height = carte_forum_romain.naturalHeight*0.5;
+      carte_forum_romain.width = carte_forum_romain.naturalWidth*0.5;
+      carte_forum_romain.style.alignItems = "baseline";
+      chooseMonuments(info);
+    }
   });
 }
 
@@ -265,7 +270,7 @@ function clickOnVENISE() {
     alert("Le palais de la famille Zeno se trouve en effet à Venise !");
     alert("Vous ne pouvez pas le visiter mais tomber sur un historien à qui vous raconter votre épopée.");
     alert("La carte que vous avez trouvé au CNAM se trouve avoir été créé par un membre de la famille Zeno !");
-    alert("L'historien vous conseille de vous rendre à la chapelle de Rosslyn, ville écossaise où a été hébegé un des membres de la famille.");
+    alert("L'historien vous conseille de vous rendre à la chapelle de Rosslyn, au sud d'Edimbourg où a été hébegé un des membres de la famille.");
     rosslynVisible = true;
 }
 
@@ -274,25 +279,30 @@ function clickOnVENISE() {
 function clickOnROSSLYN() {
     alert("En visitant la chapelle vous tombez sur un parchemin bizarre !");
     var icone_parchemin = add_obj_invent(inventory,"parchemin2.jpg");
+    var c = 0;
     icone_parchemin.width = icone_parchemin.naturalWidth*0.1;
     icone_parchemin.height = icone_parchemin.naturalHeight*0.1;
-    icone_parchemin.addEventListener("click", clickOnParchemin.bind(null,icone_parchemin));
+    icone_parchemin.addEventListener("click", clickOnParchemin.bind(null,icone_parchemin,c));
 }
 
-function clickOnParchemin(parchemin){
-  var lien_parchemin = document.createElement("A");
-  lien_parchemin.href = "parchemin.html";
-  lien_parchemin.text = "Parchemin de Rosslyn";
-  lien_parchemin.target = "_blank";
-  info.appendChild(lien_parchemin);
-  var input2 = document.createElement("INPUT");
-  var submit2 = document.createElement("INPUT");
-  input2.setAttribute("type","text");
-  submit2.value = "Entrer le mot de passe";
-  submit2.type = "submit";
-  info.appendChild(input2);
-  info.appendChild(submit2);
-  submit2.addEventListener("click", decryptParchemin.bind(null,input2,lien_parchemin,submit2));
+function clickOnParchemin(parchemin,c){
+  c = c+1;
+  if(c==1){
+    var lien_parchemin = document.createElement("A");
+    lien_parchemin.href = "parchemin.html";
+    lien_parchemin.text = "Parchemin de Rosslyn";
+    lien_parchemin.target = "_blank";
+    lien_parchemin.style.alignItems = "center";
+    info.appendChild(lien_parchemin);
+    var input2 = document.createElement("INPUT");
+    var submit2 = document.createElement("INPUT");
+    input2.setAttribute("type","text");
+    submit2.value = "Entrer le mot de passe";
+    submit2.type = "submit";
+    info.appendChild(input2);
+    info.appendChild(submit2);
+    submit2.addEventListener("click", decryptParchemin.bind(null,input2,lien_parchemin,submit2));
+  }
 }
 
 function decryptParchemin(txt,lien_parchemin,submit){
@@ -353,6 +363,7 @@ function add_obj_invent(inventory,image){
   aussi pour chaque objet il va falloir recréer une fonction eventlistener */
   var obj = document.createElement("IMG")
   obj.src = image;
+  obj.style.alignItems = "flex-start";
   inventory.appendChild(obj);
   return obj;
 }
