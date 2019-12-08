@@ -244,3 +244,9 @@ function add_obj_invent(inventory,image){
 // LES MARQUEURS --- affichage
 alert("Aujourd'hui a lieu une exposition sur les globes au CNAM");
 marker_cnam.addTo(mymap) // on ajoute le marqueur à la carte
+
+
+function end() {
+    var user = prompt("Entrez votre pseudo")
+
+}
