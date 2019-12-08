@@ -9,9 +9,9 @@
 }
 
 #map {
-    width: 70%;
-    height: 400px;
-    position: absolute;
+    grid-column: 1;
+    grid-row: 1;
+    border-radius: 50px;
 }
 
 .centertext {
@@ -19,18 +19,30 @@
 }
 
 #info {
-    width: 30%;
-    height: 400px;
+    grid-column: 2;
+    grid-row: 1;
     float : right;
-    background-color: blue;
+    background-image: url("../img/paper.jpg");
+    border-radius: 50px;
 }
 
 #inventory {
-    background-color: green;
-    width: 100%;
-    height: 400px;
-    position: absolute;
-    margin-top: 400px;
+    background-image: url("../img/wood.jpg");
+    grid-column: 1 / span 3;
+    grid-row: 2;
+
+    border-radius: 50px;
+}
+
+.game {
+    height: 700px;
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-template-rows: 80% 20%;
+}
+
+.body {
+    background-image: url("../img/map.jpg");
 }
 
 .item  {
